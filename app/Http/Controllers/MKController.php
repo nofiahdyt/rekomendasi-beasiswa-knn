@@ -21,6 +21,11 @@ class MKController extends Controller
     }
 
     public function createPost(Request $request) {
+        $request->validate([
+            'nama_mk'=>'required',
+            'prodi'=>'required',
+            'sks'=>'required'
+        ]);
         // dd($request);
         $MK = MK::create($request->all());
         $MK->save();

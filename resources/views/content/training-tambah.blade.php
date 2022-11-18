@@ -1,20 +1,20 @@
 @extends('layout.master')
 
 @section('judul')
-<title>Nilai</title>
+<title>Training</title>
 @endsection
 
 @section('data')
-<h1>Data Nilai</h1>
+<h1>Data Training</h1>
 @endsection
 
 @section('menu')
 <li class=""><a class="nav-link" href="{{ route('Home')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('mahasiswa')}}"><i class="fas fa-graduation-cap"></i> <span>Data Mahasiswa</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
-<li class="active"><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
-<li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
+<li class="active"><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
 @section('content')
@@ -34,56 +34,55 @@
           </div>
         @endif
 
-<form action="{{route('postnilai')}}" method="post" id="form-tambah">
-          @csrf
+<form action="{{route('posttraining')}}" method="post" id="form-tambah">
+@csrf
 <div class="row"> 
   <div class="col-md-12">
+    <input type="hidden" name="id" value=" " id="id_data">
     <div class="form-group">
-      
-      <label @error('npm') 
-      class="text-danger"  
-      @enderror>NPM @error('npm') |
-      {{ $message }} 
-      @enderror</label>
-      <select class="form-control form-control-sm" name="id_mhs" id="nama">
-        <option >Pilih NPM</option>        
-        @foreach($mahasiswa as $m)
-        <option {{$mks=$m->nama}} value="{{$m->id}}">{{$m->npm}}</option>
-        @endforeach
-      </select>
-      
+
       <label @error('nama') 
       class="text-danger" 
       @enderror>Nama Mahasiswa @error('nama') |
       {{ $message }} 
       @enderror</label>
-      <input type="text" id="tampil" value="{{$mks}}" class="form-control">
-
-      <label @error('prodi') 
-      class="text-danger" 
-      @enderror>Program Studi @error('prodi') |
-      {{ $message }} 
-      @enderror</label>
-
-      <label @error('nama_mk') 
-      class="text-danger" 
-      @enderror>Nama Mata Kuliah @error('nama_mk') |
-      {{ $message }} 
-      @enderror</label>
-      <select class="form-control form-control-sm" name="id_mk" id="nama">
-        <option >Pilih Program Studi</option>
-        @foreach($mk as $m) 
-        <option value="{{$m->id}}" >{{$m->id}} | {{$m->nama_mk}} prodi:{{$m->prodi}}</option>
-        @endforeach
-      </select>
+      <input type="text" name="nama" class="form-control">
       
-      <label @error('nilai') 
+      <label @error('ipk') 
       class="text-danger" 
-      @enderror>Nilai @error('nilai') |
+      @enderror>IPK @error('ipk') |
       {{ $message }} 
       @enderror</label>
-      <input type="text" name="nilai" class="form-control">
-                  
+      <input type="number" name="ipk" class="form-control">
+      
+      <label @error('pengasilan') 
+      class="text-danger" 
+      @enderror>Penghasilan @error('pengasilan') |
+      {{ $message }} 
+      @enderror</label>
+      <input type="number" name="pengasilan" class="form-control">
+            
+      <label @error('smt') 
+      class="text-danger" 
+      @enderror>Semester @error('smt') |
+      {{ $message }} 
+      @enderror</label>
+      <input type="number" name="smt" class="form-control">
+            
+      <label @error('status') 
+      class="text-danger" 
+      @enderror>Status Perkawinan @error('status') |
+      {{ $message }} 
+      @enderror</label>
+      <input type="text" name="status" class="form-control">
+            
+      <label @error('label') 
+      class="text-danger" 
+      @enderror>Label @error('label') |
+      {{ $message }} 
+      @enderror</label>
+      <input type="text" name="label" class="form-control">
+            
     </div>
   </div>
 </div>

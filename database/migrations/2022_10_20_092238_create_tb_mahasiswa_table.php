@@ -24,7 +24,7 @@ class CreateTbMahasiswaTable extends Migration
             $table->string('tempat_lahir', 50);    
             $table->string('semester', 2);    
             $table->string('status_perkawinan', 7);    
-            $table->integer('ipk');    
+            $table->double('ipk');    
             $table->integer('penghasilan');    
             $table->string('email', 50);
         });

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MKController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\RekomendasiController;
+use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('Home');
 
+route::get('/rekomendasi', [RekomendasiController::class, 'rekomendasi'])->name('rekomendasi');
 route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('createmahasiswa');
 route::post('/mahasiswa/create/post', [MahasiswaController::class, 'createPost'])->name('postmahasiswa');
@@ -46,3 +48,10 @@ route::post('/nilai/create/post', [NilaiController::class, 'createPost'])->name(
 route::get('/nilai/update/{id}', [NilaiController::class, 'edit'])->name('updatenilai');
 route::post('/nilai/update/post/{id}', [NilaiController::class, 'editpost'])->name('postupdatenilai');
 route::get('/delete/nilai/{id}', [NilaiController::class, 'hapus'])->name('deletenilai');
+
+route::get('/training', [TrainingController::class, 'index'])->name('training');
+route::get('/training/create', [TrainingController::class, 'create'])->name('createtraining');
+route::post('/training/create/post', [TrainingController::class, 'createPost'])->name('posttraining');
+route::get('/training/update/{id}', [TrainingController::class, 'edit'])->name('updatetraining');
+route::post('/training/update/post/{id}', [TrainingController::class, 'editpost'])->name('postupdatetraining');
+route::get('/delete/training/{id}', [TrainingController::class, 'hapus'])->name('deletetraining');

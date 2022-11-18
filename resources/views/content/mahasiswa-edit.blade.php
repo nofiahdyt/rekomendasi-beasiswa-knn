@@ -8,6 +8,15 @@
 <h1>Data Mahasiswa</h1>
 @endsection
 
+@section('menu')
+<li class=""><a class="nav-link" href="{{ route('Home')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+<li class="active"><a class="nav-link" href="{{ route('mahasiswa')}}"><i class="fas fa-graduation-cap"></i> <span>Data Mahasiswa</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
+<li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
+@endsection
+
 @section('content')
 <div class="section-body">
     <div class="row">
@@ -57,8 +66,8 @@
       @enderror>Jenis Kelamin @error('jk') |
       {{ $message }} 
       @enderror</label>
-      <select class="form-control form-control-sm" name="jk" value=" {{ $mahasiswa->jk }}" id="">
-        <option >Pilih Jenis Kelamin</option>
+      <select class="form-control form-control-sm" name="jk"  id="">
+        <option value=" {{ $mahasiswa->jk }}">{{ $mahasiswa->jk }}</option>
         <option value="Perempuan">Perempuan</option>
         <option value="Laki-laki">Laki-laki</option>
       </select>
@@ -75,23 +84,22 @@
       @enderror>Tanggal Lahir @error('tanggal_lahir') |
       {{ $message }} 
       @enderror</label>
-      <input type="date" name="tanggal_lahir" value=" {{ $mahasiswa->tanggal_lahir }}" class="form-control">
+      <input type="date" name="tanggal_lahir" value=" {{ $mahasiswa->tgl_lahir }}" class="form-control">
 
       <label @error('semester') 
       class="text-danger" 
       @enderror>Semester @error('semester') |
       {{ $message }} 
       @enderror</label>
-      <input type="number" name="semester" value=" {{ $mahasiswa->semester }}" class="form-control">
-
+      <input type="number" name="semester" value="{{$mahasiswa->semester}}" class="form-control">
       <label @error('status_perkawinan') 
       class="text-danger" 
       @enderror>Status Perkawinan @error('status_perkawinan') |
       {{ $message }} 
       @enderror</label>
       {{-- <input type="text" name="status_perkawinan" value=" {{ $mahasiswa->status_perkawinan }}" class="form-control"> --}}
-      <select class="form-control form-control-sm" name="status_perkawinan" value=" {{ $mahasiswa->status_perkawinan }}" id="">
-        <option >Pilih Status Perkawinan</option>
+      <select class="form-control form-control-sm" name="status_perkawinan" value=" " id="">
+        <option value="{{ $mahasiswa->status_perkawinan }}">{{ $mahasiswa->status_perkawinan }}</option>
         <option value="Sudah">Sudah Menikah</option>
         <option value="Belum">Belum Menikah</option>
       </select>
@@ -101,15 +109,14 @@
       @enderror>IPK @error('ipk') |
       {{ $message }} 
       @enderror</label>
-      <input type="number" name="ipk" value=" {{ $mahasiswa->ipk }}" class="form-control">
+      <input type="number" step=0.001 name="ipk" value="{{$mahasiswa->ipk}}" class="form-control">
 
       <label @error('penghasilan') 
       class="text-danger" 
       @enderror>Penghasilan @error('penghasilan') |
       {{ $message }} 
       @enderror</label>
-      <input type="number" name="penghasilan" value=" {{ $mahasiswa->penghasilan }}" class="form-control">
-
+      <input type="number"  name="penghasilan" class="form-control" value="{{$mahasiswa->penghasilan}}">
       <label @error('email') 
       class="text-danger" 
       @enderror>Email @error('email') |

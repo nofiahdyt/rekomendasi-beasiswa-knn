@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbTrainingTable extends Migration
+class CreateTbKuotaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateTbTrainingTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_training', function (Blueprint $table) {
+        Schema::create('tb_kuota', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nama', 10);
-            $table->double('ipk');
-            $table->integer('smt');
-            $table->integer('penghasilan');
-            $table->string('status', 10);
-            $table->string('label', 20);
+            $table->string('nama_beasiswa', 50);
+            $table->integer('kuota');
+            $table->text('deskripsi');
+            $table->text('syarat');
         });
     }
 
@@ -32,6 +30,6 @@ class CreateTbTrainingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_training');
+        Schema::dropIfExists('tb_kuota');
     }
 }

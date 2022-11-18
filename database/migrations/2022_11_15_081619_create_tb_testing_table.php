@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbTrainingTable extends Migration
+class CreateTbTestingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTbTrainingTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_training', function (Blueprint $table) {
+        Schema::create('tb_testing', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('nama', 10);
@@ -32,6 +32,6 @@ class CreateTbTrainingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_training');
+        Schema::dropIfExists('tb_testing');
     }
 }

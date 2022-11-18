@@ -9,5 +9,5 @@ class Rekomendasi extends Model
 {
     use HasFactory;
     protected $table = 'tb_rekomendasi';
-    protected $fillable = ['nama', 'npm', 'jk', 'alamat', 'label'];
+    protected $fillable = ['nama', 'npm', 'ipk', 'penghasilan','semester', 'status_perkawinan', 'label'];
 }
