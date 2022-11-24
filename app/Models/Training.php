@@ -9,5 +9,5 @@ class Training extends Model
 {
     use HasFactory;
     protected $table = 'tb_training';
-    protected $fillable = ['nama', 'ipk', 'smt', 'penghasilan', 'status'];
+    protected $fillable = ['nama', 'ipk', 'smt', 'penghasilan', 'status', 'label', 'hasil'];
 }

@@ -79,9 +79,9 @@ class MahasiswaController extends Controller
             }else if($request->status_perkawinan == "Sudah"){
                 $status=1;
             }
-            $ipkh=(4-$ipk);
-            $semesterh=(4-$semester);
-            $pengh=(4-$peng);
+            $ipkh=(5-$ipk);
+            $semesterh=(5-$semester);
+            $pengh=(5-$peng);
             $statush=(2-$status);
             $pros=sqrt(($ipkh*$ipkh)+($semesterh*$semesterh)+($pengh*$pengh)+($statush*$statush));
             // dd($pros);
@@ -93,8 +93,7 @@ class MahasiswaController extends Controller
                 $hasil->status=$status;
                 $hasil->label=$pros;
                 $hasil->hasil="tidak_lulus";
-                $hasil->save();
-        
+                $hasil->save();        
         return redirect()->route('mahasiswa');
     }
 
