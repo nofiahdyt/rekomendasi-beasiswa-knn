@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2022 pada 11.01
+-- Waktu pembuatan: 24 Nov 2022 pada 12.19
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -107,7 +107,7 @@ CREATE TABLE `tb_mahasiswa` (
   `nama` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `npm` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jk` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jk` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_lahir` date NOT NULL,
   `tempat_lahir` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `semester` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -116,6 +116,15 @@ CREATE TABLE `tb_mahasiswa` (
   `penghasilan` int(11) NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tb_mahasiswa`
+--
+
+INSERT INTO `tb_mahasiswa` (`id`, `created_at`, `updated_at`, `nama`, `npm`, `alamat`, `jk`, `tgl_lahir`, `tempat_lahir`, `semester`, `status_perkawinan`, `ipk`, `penghasilan`, `email`) VALUES
+(7, '2022-11-22 21:55:12', '2022-11-22 21:55:12', 'Dea Auliyana', '1918001', 'jshvb', 'Perempuan', '2022-11-09', 'Dasan Pungkang', '5', 'Sudah', 2.9, 23000000, 'jagad@emonev.com'),
+(8, '2022-11-22 22:45:23', '2022-11-22 22:45:23', 'Citasu Rental Kamera', '1918001', 'Malang', 'Perempuan', '2022-11-18', 'malang', '3', 'Sudah', 2.1, 2000000, 'admin@gmail.com'),
+(9, '2022-11-23 00:08:27', '2022-11-23 00:08:27', 'Nofiaaa', '1', 'malang', 'Perempuan', '2022-11-21', 'malang', '9', 'Sudah', 1.5, 400000000, 'jagad@emonev.com');
 
 -- --------------------------------------------------------
 
@@ -132,6 +141,13 @@ CREATE TABLE `tb_mk` (
   `sks` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `tb_mk`
+--
+
+INSERT INTO `tb_mk` (`id`, `created_at`, `updated_at`, `nama_mk`, `prodi`, `sks`) VALUES
+(1, '2022-11-20 08:57:43', '2022-11-20 08:57:43', 'PAI', 'MPI', '2');
+
 -- --------------------------------------------------------
 
 --
@@ -147,6 +163,13 @@ CREATE TABLE `tb_nilai` (
   `nilai` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `tb_nilai`
+--
+
+INSERT INTO `tb_nilai` (`id`, `created_at`, `updated_at`, `id_mk`, `id_mhs`, `nilai`) VALUES
+(1, '2022-11-20 09:29:29', '2022-11-20 09:30:13', 1, 3, '90');
+
 -- --------------------------------------------------------
 
 --
@@ -158,7 +181,11 @@ CREATE TABLE `tb_rekomendasi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `id_mhs` int(11) NOT NULL,
-  `label` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `ipk` double NOT NULL,
+  `smt` int(11) NOT NULL,
+  `penghasilan` int(11) NOT NULL,
+  `status` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `label` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -171,13 +198,22 @@ CREATE TABLE `tb_testing` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `nama` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ipk` double NOT NULL,
   `smt` int(11) NOT NULL,
   `penghasilan` int(11) NOT NULL,
   `status` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `label` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tb_testing`
+--
+
+INSERT INTO `tb_testing` (`id`, `created_at`, `updated_at`, `nama`, `ipk`, `smt`, `penghasilan`, `status`, `label`) VALUES
+(1, '2022-11-23 02:27:50', '2022-11-23 02:27:50', 'Nofiaaa', 1, 1, 1, 'Sudah', 'Y'),
+(2, '2022-11-23 21:56:31', '2022-11-23 21:56:31', 'Dea Auliyana', 3, 1, 500000, 'Sudah', 'Y'),
+(3, '2022-11-23 21:57:54', '2022-11-23 21:57:54', 'Citasu Rental Kamera Lombok', 2, 7, 30000000, 'Sudah', 'Y');
 
 -- --------------------------------------------------------
 
@@ -189,13 +225,23 @@ CREATE TABLE `tb_training` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `nama` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ipk` double NOT NULL,
   `smt` int(11) NOT NULL,
   `penghasilan` int(11) NOT NULL,
   `status` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `label` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `label` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hasil` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tb_training`
+--
+
+INSERT INTO `tb_training` (`id`, `created_at`, `updated_at`, `nama`, `ipk`, `smt`, `penghasilan`, `status`, `label`, `hasil`) VALUES
+(8, '2022-11-22 21:55:12', '2022-11-23 00:31:19', 'Dea Auliyana', 1, 3, 1, '1', '4.4721359549996', 'lulus'),
+(9, '2022-11-22 22:45:23', '2022-11-23 00:31:19', 'Citasu Rental Kamera', 1, 4, 4, '1', '3.1622776601684', 'lulus'),
+(10, '2022-11-23 00:08:27', '2022-11-23 00:31:19', 'Nofiaaa', 1, 1, 1, '1', '5.2915026221292', 'lulus');
 
 -- --------------------------------------------------------
 
@@ -219,7 +265,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Nofia', 'admin@gmail.com', NULL, '$2y$10$D789QRctSwF8l999oVqe1eGZrGuof8VdSo79dGpq47OhsActu4kZi', NULL, '2022-11-15 03:26:02', '2022-11-15 03:26:02');
+(1, 'Nofia', 'admin@gmail.com', NULL, '$2y$10$D789QRctSwF8l999oVqe1eGZrGuof8VdSo79dGpq47OhsActu4kZi', 'FkGayeUqCG3JzXDDjg2f8DiR9fHhtwoU81p7jbkzeVZZ4zuOESY9Bx1l0ZPy', '2022-11-15 03:26:02', '2022-11-15 03:26:02');
 
 --
 -- Indexes for dumped tables
@@ -319,19 +365,19 @@ ALTER TABLE `tb_kuota`
 -- AUTO_INCREMENT untuk tabel `tb_mahasiswa`
 --
 ALTER TABLE `tb_mahasiswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_mk`
 --
 ALTER TABLE `tb_mk`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_rekomendasi`
@@ -343,13 +389,13 @@ ALTER TABLE `tb_rekomendasi`
 -- AUTO_INCREMENT untuk tabel `tb_testing`
 --
 ALTER TABLE `tb_testing`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_training`
 --
 ALTER TABLE `tb_training`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
