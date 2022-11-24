@@ -6,6 +6,7 @@ use App\Http\Controllers\MKController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\TestingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,3 +56,13 @@ route::post('/training/create/post', [TrainingController::class, 'createPost'])-
 route::get('/training/update/{id}', [TrainingController::class, 'edit'])->name('updatetraining');
 route::post('/training/update/post/{id}', [TrainingController::class, 'editpost'])->name('postupdatetraining');
 route::get('/delete/training/{id}', [TrainingController::class, 'hapus'])->name('deletetraining');
+
+route::get('/testing', [TestingController::class, 'index'])->name('testing');
+route::get('/testing/create', [TestingController::class, 'create'])->name('createtesting');
+route::post('/testing/create/post', [TestingController::class, 'createPost'])->name('posttesting');
+route::get('/testing/update/{id}', [TestingController::class, 'edit'])->name('updatetesting');
+route::post('/testing/update/post/{id}', [TestingController::class, 'editpost'])->name('postupdatetesting');
+route::get('/delete/testing/{id}', [TestingController::class, 'hapus'])->name('deletetesting');
+
+
+route::get('/coba',[RekomendasiController::class,'rekomendasi']);

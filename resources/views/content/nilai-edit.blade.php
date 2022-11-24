@@ -14,6 +14,7 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class="active"><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
@@ -54,12 +55,12 @@
         @endforeach
       </select>
       
-      <label @error('nama') 
+      {{-- <label @error('nama') 
       class="text-danger" 
       @enderror>Nama Mahasiswa @error('nama') |
       {{ $message }} 
       @enderror</label>
-      <input type="text" id="tampil" value="{{$mks}}" class="form-control">
+      <input type="text" id="tampil" value="{{$mks}}" class="form-control"> --}}
 
       <label @error('prodi') 
       class="text-danger" 

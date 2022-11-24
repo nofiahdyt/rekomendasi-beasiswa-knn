@@ -14,7 +14,8 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
-<li class="active"><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
+<li class="active"><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
 @section('content')
@@ -34,7 +35,7 @@
           </div>
         @endif
 
-<form action=" {{route('postupdatetraining', $tr->id)}} " method="post" id="form-edit">
+<form action=" {{route('postupdatetesting', $tr->id)}} " method="post" id="form-edit">
 @csrf
 <div class="row"> 
   <div class="col-md-12">
@@ -74,15 +75,25 @@
       @enderror>Status Perkawinan @error('status') |
       {{ $message }} 
       @enderror</label>
-      <input type="number" name="status" value=" {{ $tr->status }}" class="form-control">    
-      
+      {{-- <input type="number" name="status" value=" {{ $tr->status }}" class="form-control">     --}}
+      <select class="form-control form-control-sm" name="status" value=" " id="">
+        <option value="{{ $tr->status }}">{{ $tr->status }}</option>
+        <option value="Sudah">Sudah Menikah</option>
+        <option value="Belum">Belum Menikah</option>
+      </select>
+
       <label @error('label') 
       class="text-danger" 
       @enderror>Label @error('label') |
       {{ $message }} 
       @enderror</label>
-      <input type="number" name="label" value=" {{ $tr->label }}" class="form-control">    
-      
+      {{-- <input type="number" name="label" value=" {{ $tr->label }}" class="form-control">     --}}
+      <select class="form-control form-control-sm" name="label" value=" " id="">
+        <option value="{{ $tr->label }}">{{ $tr->label }}</option>
+        <option value="Y">Direkomendasikan</option>
+        <option value="T">Tidak Direkomendasikan</option>
+      </select>
+
     </div>
   </div>
 </div>

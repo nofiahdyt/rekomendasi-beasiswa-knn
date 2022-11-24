@@ -14,6 +14,7 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class="active"><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
@@ -36,31 +37,31 @@
     		<table class="table table-striped table-bordered table-sm">
     			<tr>
     				<th>No</th>
-                    <th>Nama Mahasiswa</th>
-                    <th>IPK</th>
+            <th>Nama Mahasiswa</th>
+            <th>IPK</th>
     				<th>Penghasilan</th>
-                    <th>Semester</th>
-                    <th>Status Perkawinan</th>
-                    <th>Label</th>
-    				<th>Action</th>
+            <th>Semester</th>
+            <th>Status Perkawinan</th>
+            <th>Label</th>
+    				{{-- <th>Action</th> --}}
     			</tr>
     			@foreach ($training as $no => $tr)
     				<tr>
     					<td>{{ $no+1 }}</td>
-                        <td>{{ $tr->nama }}</td>
-                        <td>{{ $tr->ipk }}</td>
-                        <td>{{ $tr->pengasilan }}</td>
-                        <td>{{ $tr->smt }}</td>
-                        <td>{{ $tr->status }}</td>
-                        <td>{{ $tr->label }}</td>
-    					<td>
+              <td>{{ $tr->nama }}</td>
+              <td>{{ $tr->ipk }}</td>
+              <td>{{ $tr->pengasilan }}</td>
+              <td>{{ $tr->smt }}</td>
+              <td>{{ $tr->status }}</td>
+              <td>{{ $tr->label }}</td>
+    					{{-- <td>
               <a href="{{route('updatetraining', $tr->id)}}"  class="badge badge-success btn-edit">Edit</a>
               <a href="{{route('deletetraining', $tr->id)}}" class="badge badge-danger btn-edit">Hapus</a>     
               @csrf
               @method('delete')
               </form>
               </a>
-              </td>
+              </td> --}}
             </tr>
     			@endforeach
     		</table>    		

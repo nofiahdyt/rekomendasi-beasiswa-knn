@@ -14,6 +14,7 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class="active"><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
@@ -37,30 +38,30 @@
     		<table class="table table-striped table-bordered table-sm">
     			<tr>
     				<th>No</th>
-                    <th>Nama Mahasiswa</th>
+                    {{-- <th>Nama Mahasiswa</th> --}}
                     <th>NPM</th>
     				        <th>Program Studi</th>
                     <th>Nama Mata Kuliah</th>
                     <th>Nilai</th>
-    				<th>Action</th>
+    				        <th>Action</th>
     			</tr>
     			@foreach ($nilai as $no => $mk)
-    				<tr>
-    					<td>{{ $no+1 }}</td>
-                        <td>{{ $mk->nama }}</td>
-                        <td>{{ $mk->npm }}</td>
-                        <td>{{ $mk->prodi }}</td>
-                        <td>{{ $mk->nama_mk }}</td>
-                        <td>{{ $mk->nilai }}</td>
-    					          <td>
-                          <a href="{{route('updatenilai', $mk->id)}}"  class="badge badge-success btn-edit">Edit</a>
-                          <a href="{{route('deletenilai', $mk->id)}}" class="badge badge-danger btn-edit">Hapus</a>     
-                              @csrf
-                              @method('delete')
-                            </form>
-                        </a>
-                      </td>
-                    </tr>
+          <tr>
+            <td>{{ $no+1 }}</td>
+            {{-- <td>{{ $mk->nama }}</td> --}}
+            <td>{{ $mk->npm }}</td>
+            <td>{{ $mk->prodi }}</td>
+            <td>{{ $mk->nama_mk }}</td>
+            <td>{{ $mk->nilai }}</td>
+            <td>
+              <a href="{{route('updatenilai', $mk->id)}}"  class="badge badge-success btn-edit">Edit</a>
+              <a href="{{route('deletenilai', $mk->id)}}" class="badge badge-danger btn-edit">Hapus</a>     
+                  @csrf
+                  @method('delete')
+                </form>
+            </a>
+            </td>
+          </tr>
     			@endforeach
     		</table>
     		

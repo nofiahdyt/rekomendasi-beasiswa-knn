@@ -32,10 +32,10 @@ class NilaiController extends Controller
 
     public function createPost(Request $request) {
         $request->validate([
-            'npm'=>'required',
-            'nama'=>'required',
-            'prodi'=>'required',
-            'nama_mk'=>'required',
+            'id_mhs'=>'required',
+            // 'nama'=>'required',
+            // 'prodi'=>'required',
+            'id_mk'=>'required',
             'nilai'=>'required'
         ]);
         // dd($request);

@@ -13,7 +13,8 @@
 <li class=""><a class="nav-link" href="{{ route('mahasiswa')}}"><i class="fas fa-graduation-cap"></i> <span>Data Mahasiswa</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
-<li class="active"><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class="active"><a class="nav-link" href=""><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
@@ -21,7 +22,9 @@
 <div class="section-body">
     <div class="row">
     	<div class="col-12 col-md-12 col-lg-12">
-          
+        <a href =" {{route ('createtesting')}} " class="btn btn-primary" data-target="form-tambah">Tambah Data</a>
+    		
+    		
     		
     		<hr>
         {{-- @if (session('message'))
@@ -42,6 +45,9 @@
     				<th>Penghasilan</th>
             <th>Semester</th>
             <th>Status Perkawinan</th>
+            <th>Nilai</th>
+            <th>Rank</th>
+    				<th>Status</th>
     				<th>Action</th>
     			</tr>
     			@foreach ($testing as $no => $tes)
@@ -52,11 +58,14 @@
               <td>{{ $tes->pengasilan }}</td>
               <td>{{ $tes->smt }}</td>
               <td>{{ $tes->status }}</td>
+              <td>{{ $tes->label }}</td>
+              <td>{{$no+1}}</td>
+              <td>{{$tes->hasil}}</td>
     					<td>
-              <a href="{{route('updatetesting', $tes->id)}}"  class="badge badge-success btn-edit">Edit</a>
-              <a href="{{route('deletetesting', $tes->id)}}" class="badge badge-danger btn-edit">Hapus</a>     
-              @csrf
-              @method('delete')
+                <a href="{{route('updatetesting', $tes->id)}}"  class="badge badge-success btn-edit">Edit</a>
+                <a href="{{route('deletetesting', $tes->id)}}" class="badge badge-danger btn-edit">Hapus</a>     
+                @csrf
+                @method('delete')
               </form>
               </a>
               </td>

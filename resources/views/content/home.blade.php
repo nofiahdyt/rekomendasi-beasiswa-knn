@@ -14,53 +14,45 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
 @section('content')
 <div class="section-body">
-    <div class="row">
-    	<div class="col-12 col-md-12 col-lg-12">
-          {{-- <a href =" {{route ('createmk')}} " class="btn btn-primary" data-target="form-tambah">Tambah Data</a> --}}
-    		
-    		<hr>
-        {{-- @if (session('message'))
-          <div class="alert alert-success alert-dismissible show fade">
-            <div class="alert-body">
-              <button class="close" data-dismiss="alert">
-                <span>×</span>
-              </button>
-              {{ session('message') }}
-            </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+      <div class="card card-statistic-1">
+        <div class="card-icon bg-primary">
+          <i class="far fa-user"></i>
+        </div>
+        <div class="card-wrap">
+          <div class="card-header">
+            <h4>Mahasiswa Diterima</h4>
           </div>
-        @endif --}}
-    		<table class="table table-striped table-bordered table-sm">
-    			<tr>
-    				<th>No</th>
-    				<th>Program Studi</th>
-                    <th>Nama Mata Kuliah</th>
-                    <th>SKS</th>
-    				<th>Action</th>
-    			</tr>
-    			{{-- @foreach ($mk as $no => $mk)
-    				<tr>
-    					<td>{{ $no+1 }}</td>
-                        <td>{{ $mk->prodi }}</td>
-                        <td>{{ $mk->nama_mk }}</td>
-                        <td>{{ $mk->sks }}</td>
-    					<td>
-                          <a href="{{route('updatemk',$mk->id)}}"  class="badge badge-success btn-edit">Edit</a>
-                          <a href="{{route('deletemk',$mk->id)}}" class="badge badge-danger btn-edit">Hapus</a>     
-                              @csrf
-                              @method('delete')
-                            </form>
-                        </a>
-                      </td>
-                    </tr>
-    			@endforeach --}}
-    		</table>
-    		
-    	</div>
+          <div class="card-body">
+            {{$mterima}}
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+      <div class="card card-statistic-1">
+        <div class="card-icon bg-danger">
+          <i class="far fa-newspaper"></i>
+        </div>
+        <div class="card-wrap">
+          <div class="card-header">
+            <h4>Mahasiswa Tidak Diterima</h4>
+          </div>
+          <div class="card-body">
+            {{$mtidak}}
+          </div>
+        </div>
+      </div>
+    </div>
+   
+   
+  </div>
 </div>
 @endsection

@@ -14,7 +14,8 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
-<li class="active"><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
+<li class="active"><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
 @section('content')
@@ -34,7 +35,7 @@
           </div>
         @endif
 
-<form action="{{route('posttraining')}}" method="post" id="form-tambah">
+<form action="{{route('posttesting')}}" method="post" id="form-tambah">
 @csrf
 <div class="row"> 
   <div class="col-md-12">
@@ -55,12 +56,12 @@
       @enderror</label>
       <input type="number" name="ipk" class="form-control">
       
-      <label @error('pengasilan') 
+      <label @error('penghasilan') 
       class="text-danger" 
-      @enderror>Penghasilan @error('pengasilan') |
+      @enderror>Penghasilan @error('penghasilan') |
       {{ $message }} 
       @enderror</label>
-      <input type="number" name="pengasilan" class="form-control">
+      <input type="number" name="penghasilan" class="form-control">
             
       <label @error('smt') 
       class="text-danger" 
@@ -74,14 +75,24 @@
       @enderror>Status Perkawinan @error('status') |
       {{ $message }} 
       @enderror</label>
-      <input type="text" name="status" class="form-control">
+      {{-- <input type="text" name="status" class="form-control"> --}}
+      <select class="form-control form-control-sm" name="status" id="">
+        <option >Pilih Status Perkawinan</option>
+        <option value="Sudah">Sudah Menikah</option>
+        <option value="Belum">Belum Menikah</option>
+      </select>
             
       <label @error('label') 
       class="text-danger" 
       @enderror>Label @error('label') |
       {{ $message }} 
       @enderror</label>
-      <input type="text" name="label" class="form-control">
+      {{-- <input type="text" name="label" class="form-control"> --}}
+      <select class="form-control form-control-sm" name="label" id="">
+        <option >Pilih Label</option>
+        <option value="Y">Direkomendasikan</option>
+        <option value="T">Tidak Direkomendasikan</option>
+      </select>
             
     </div>
   </div>

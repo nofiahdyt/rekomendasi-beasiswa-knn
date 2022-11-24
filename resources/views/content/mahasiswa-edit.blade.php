@@ -14,6 +14,7 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
@@ -117,6 +118,7 @@
       {{ $message }} 
       @enderror</label>
       <input type="number"  name="penghasilan" class="form-control" value="{{$mahasiswa->penghasilan}}">
+      
       <label @error('email') 
       class="text-danger" 
       @enderror>Email @error('email') |

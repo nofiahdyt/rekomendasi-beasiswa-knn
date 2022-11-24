@@ -19,7 +19,7 @@ class CreateTbMahasiswaTable extends Migration
             $table->string('nama', 50);    
             $table->string('npm', 10);    
             $table->string('alamat', 50);    
-            $table->string('jk', 2);    
+            $table->string('jk', 10);    
             $table->date('tgl_lahir');    
             $table->string('tempat_lahir', 50);    
             $table->string('semester', 2);    

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Rekomendasi;
+use App\Models\Training;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -38,7 +39,7 @@ class MahasiswaController extends Controller
         // dd($request);
         $Mahasiswa = Mahasiswa::create($request->all());
         $Mahasiswa->save();
-        $hasil= new Rekomendasi();
+        $hasil= new Training();
         // dd($rekomendasi);
             if($request->semester<=2){
                 $semester=5;
@@ -85,12 +86,13 @@ class MahasiswaController extends Controller
             $pros=sqrt(($ipkh*$ipkh)+($semesterh*$semesterh)+($pengh*$pengh)+($statush*$statush));
             // dd($pros);
             $hasil->nama=$request->nama;
-                $hasil->npm=$request->npm;
+                // $hasil->npm=$request->npm;
                 $hasil->ipk=$ipk;
                 $hasil->penghasilan=$peng;
-                $hasil->semester=$semester;
-                $hasil->status_perkawinan=$status;
+                $hasil->smt=$semester;
+                $hasil->status=$status;
                 $hasil->label=$pros;
+                $hasil->hasil="tidak_lulus";
                 $hasil->save();
         
         return redirect()->route('mahasiswa');
@@ -102,7 +104,6 @@ class MahasiswaController extends Controller
     }
     public function editpost(Request $request,$id){
         $mahasiswa=Mahasiswa::find($id);
-        $
         $mahasiswa->update($request->all());
         return redirect()->route('mahasiswa');
     }

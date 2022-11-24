@@ -14,6 +14,7 @@
 <li class=""><a class="nav-link" href="{{ route('mk')}}"><i class="fas fa-book"></i> <span>Data Mata Kuliah</span></a></li>
 <li class="active"><a class="nav-link" href="{{ route('nilai')}}"><i class="fas fa-address-book"></i> <span>Data Nilai</span></a></li>
 <li class=""><a class="nav-link" href="#"><i class="fas fa-check"></i> <span>Rekomendasi</span></a></li>
+<li class=""><a class="nav-link" href="{{ route('testing')}}"><i class="fas fa-check"></i> <span>Testing</span></a></li>
 <li class=""><a class="nav-link" href="{{ route('training')}}"><i class="fas fa-check"></i> <span>Training</span></a></li>
 @endsection
 
@@ -40,40 +41,45 @@
   <div class="col-md-12">
     <div class="form-group">
       
-      <label @error('npm') 
+      <label @error('id_mhs') 
       class="text-danger"  
-      @enderror>NPM @error('npm') |
+      @enderror>NPM @error('id_mhs') |
       {{ $message }} 
       @enderror</label>
       <select class="form-control form-control-sm" name="id_mhs" id="nama">
-        <option >Pilih NPM</option>        
+        <option >Pilih NPM</option>  
+        <?php $mks = new $mahasiswa; ?>      
         @foreach($mahasiswa as $m)
-        <option {{$mks=$m->nama}} value="{{$m->id}}">{{$m->npm}}</option>
+          <option {{$mks=$m->nama}} value="{{$m->id}}">{{$m->npm}}</option>
         @endforeach
       </select>
       
-      <label @error('nama') 
+      {{-- <label @error('nama') 
       class="text-danger" 
       @enderror>Nama Mahasiswa @error('nama') |
       {{ $message }} 
       @enderror</label>
-      <input type="text" id="tampil" value="{{$mks}}" class="form-control">
+      @foreach($mahasiswa as $m)
+          <option {{$mks=$m->nama}} value="{{$m->id}}">{{$m->npm}}</option>
+      @endforeach
+      <input type="text" id="tampil" value="{{$mks}}" class="form-control"> --}}
 
-      <label @error('prodi') 
+      {{-- <label @error('prodi')
       class="text-danger" 
       @enderror>Program Studi @error('prodi') |
       {{ $message }} 
       @enderror</label>
+      <input type="text" id="tampil" value="{{$prodi}}" class="form-control" hidden> --}}
 
-      <label @error('nama_mk') 
+      <label @error('id_mk') 
       class="text-danger" 
-      @enderror>Nama Mata Kuliah @error('nama_mk') |
+      @enderror>Nama Mata Kuliah @error('id_mk') |
       {{ $message }} 
       @enderror</label>
       <select class="form-control form-control-sm" name="id_mk" id="nama">
         <option >Pilih Program Studi</option>
         @foreach($mk as $m) 
-        <option value="{{$m->id}}" >{{$m->id}} | {{$m->nama_mk}} prodi:{{$m->prodi}}</option>
+        <option value="{{$m->id}}" >{{$m->nama_mk}} prodi:{{$m->prodi}}</option>
         @endforeach
       </select>
       
